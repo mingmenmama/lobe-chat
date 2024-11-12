@@ -1,4 +1,5 @@
 {
+ "installCommand": "bun install",
   "regions": ["hkg1"],
   "headers": [
     {
@@ -11,7 +12,7 @@
       ]
     },
     {
-      "source": "(.*)",
+      "source": "/static/(.*)", // 匹配静态资源目录
       "headers": [
         {
           "key": "Cache-Control",
@@ -20,6 +21,19 @@
         {
           "key": "Vercel-CDN-Cache-Control",
           "value": "max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "(.*)", // 匹配其他所有请求
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, must-revalidate"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "max-age=60"
         }
       ]
     }
