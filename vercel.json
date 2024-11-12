@@ -12,26 +12,12 @@
       ]
     },
     {
-      "source": "/static/(.*)", // 匹配静态资源目录
+      "source": "(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, s-maxage=86400, max-age=86400"
-        },
-        {
-          "key": "Vercel-CDN-Cache-Control",
-          "value": "max-age=3600"
-        }
-      ]
-    },
-    {
-      "source": "(.*)", // 匹配其他所有请求
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300, must-revalidate"
-        },
-        {
+          "value": "public, s-maxage=300, max-age=300"
+        }, {
           "key": "Vercel-CDN-Cache-Control",
           "value": "max-age=60"
         }
