@@ -1,27 +1,4 @@
 {
- "installCommand": "bun install",
-  "regions": ["hkg1"],
-  "headers": [
-    {
-      "source": "/sw.js",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, s-maxage=300, max-age=300"
-        }, {
-          "key": "Vercel-CDN-Cache-Control",
-          "value": "max-age=60"
-        }
-      ]
-    }
-  ]
+  "installCommand": "bun install",
+  "regions": ["hkg1"]
 }
