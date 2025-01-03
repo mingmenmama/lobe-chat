@@ -1,27 +1,40 @@
 {
   "headers": [
     {
-      "source": "/sw.js",
+      "source": "/(.*)\\.(ttf|otf|woff2)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     },
     {
-      "source": "(.*)",
+      "source": "/api/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, s-maxage=86400, max-age=86400"
+          "value": "s-maxage=60, stale-while-revalidate=30"
         },
         {
           "key": "Vercel-CDN-Cache-Control",
-          "value": "max-age=3600"
+          "value": "max-age=60"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=86400, stale-while-revalidate=3600"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "max-age=86400"
         }
       ]
     }
   ],
-  "installCommand": "bun install"
+  "regions": ["hnd1"]
 }
